@@ -1,0 +1,27 @@
+{
+  "name": "node-webkit-builds",
+  "version": "0.7.1",
+  "description": "Package that keeps a listing of all the node-webkit builds and respective download links",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/IndigoUnited/node-webkit-builds.git"
+  },
+  "keywords": [
+    "node-webkit",
+    "node",
+    "webkit",
+    "nw"
+  ],
+  "author": "Indigo United",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IndigoUnited/node-webkit-builds/issues"
+  },
+  "devDependencies": {
+    "expect.js": "~0.2.0"
+  }
+}
