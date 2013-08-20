@@ -1,7 +1,7 @@
 {
   "name": "node-webkit-builds",
   "version": "0.7.1",
-  "description": "Package that keeps a listing of all the node-webkit builds and respective download links",
+  "description": "Module that keeps a listing of all the node-webkit builds and respective download links",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/test.js"
