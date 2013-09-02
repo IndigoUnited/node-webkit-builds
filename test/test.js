@@ -14,25 +14,25 @@ describe('package version', function () {
 });
 
 describe('build links', function (done) {
-    it.skip('should download the linux32 link', function (done) {
+    it.skip('linux32 resource should exist', function (done) {
 
     });
 
-    it.skip('should download the linux64 link', function (done) {
+    it.skip('linux64 resource should exist', function (done) {
 
     });
 
-    it.skip('should download the win32 link', function (done) {
+    it.skip('win32 resource should exist', function (done) {
 
     });
 
-    it.skip('should download the mac32 link', function (done) {
+    it.skip('mac32 resource should exist', function (done) {
 
     });
 });
 
 describe('change log', function () {
-    it.skip('should be be a valid URL', function () {
+    it.skip('resource should exist', function () {
 
     });
 });
