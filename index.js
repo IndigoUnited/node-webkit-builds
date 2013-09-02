@@ -3,11 +3,11 @@ var m    = require('./package.json'),
 
 module.exports = {
     version: m.version,
-    'release-notes': data['release-notes'],
+    releaseNotes: data['release-notes'],
     builds: {
-        linux32: data.linux32,
-        linux64: data.linux64,
-        win32:   data.win32,
-        mac32:   data.mac32
+        linux32: data.builds.linux32,
+        linux64: data.builds.linux64,
+        win32:   data.builds.win32,
+        mac32:   data.builds.mac32
     }
 };
