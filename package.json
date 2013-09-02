@@ -27,6 +27,7 @@
     "automaton": "~0.2.0-rc.3",
     "autofile-mkdir": "0.0.0",
     "autofile-rm": "0.0.0",
-    "semver": "~2.1.0"
+    "semver": "~2.1.0",
+    "mocha": "~1.12.1"
   }
 }
