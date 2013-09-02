@@ -8,7 +8,8 @@ var rm       = require('autofile-rm');
 var fs       = require('fs');
 var semver   = require('semver');
 
-var pkgJsonFile = __dirname + '/../package.json';
+var pkgJsonFile  = __dirname + '/../package.json',
+    dataJsonFile = __dirname + '/../data.json';
 
 module.exports = function (task) {
     task
@@ -22,27 +23,27 @@ module.exports = function (task) {
         next();
     })
 
-    // .do(rm, {
-    //     description: 'Assert tmp dir is clear',
-    //     options: {
-    //         files: __dirname + '/tmp'
-    //     }
-    // })
+    .do(rm, {
+        description: 'Assert tmp dir is clear',
+        options: {
+            files: __dirname + '/tmp'
+        }
+    })
 
-    // .do(mkdir, {
-    //     options: {
-    //         dirs: __dirname + '/tmp'
-    //     }
-    // })
+    .do(mkdir, {
+        options: {
+            dirs: __dirname + '/tmp'
+        }
+    })
 
-    // .do(download, {
-    //     description: 'Download node-webkit README.md file',
-    //     options: {
-    //         files: {
-    //             'https://raw.github.com/rogerwang/node-webkit/master/README.md': '{{readMeFile}}'
-    //         }
-    //     }
-    // })
+    .do(download, {
+        description: 'Download node-webkit README.md file',
+        options: {
+            files: {
+                'https://raw.github.com/rogerwang/node-webkit/master/README.md': '{{readMeFile}}'
+            }
+        }
+    })
 
     .do(function (opts, ctx, next) {
         fs.readFile(opts.readMeFile, {
@@ -81,17 +82,30 @@ module.exports = function (task) {
 
             // if the node-webkit release is greater than the module version
             if (semver.gt(version, pkg.version)) {
-                ctx.log.infoln('Found new version:', pkg.version, '->', version);
+                ctx.log.successln('Found new version:', pkg.version, '->', version);
                 pkg.version = version;
 
                 fs.writeFile(pkgJsonFile, JSON.stringify(pkg, null, '  '), function (err) {
-                    next(err);
+                    fs.writeFile(dataJsonFile, JSON.stringify({
+                        'release-notes': releaseNotes,
+                        builds: {
+                            linux32: linux32,
+                            linux64: linux64,
+                            win32:   win32,
+                            mac32:   mac32
+                        }
+                    }, null, '  '), function (err) {
+                        next(err);
+                    });
                 });
+            } else {
+                ctx.log.warnln('Did not find more recent version');
+                next();
             }
 
             next();
         });
     }, {
-        description: ''
+        description: 'Check for new version and update module if necessary'
     });
 };
