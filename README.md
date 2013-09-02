@@ -19,7 +19,7 @@ This module provides you:
 
 Start by installing the module using `npm install node-webkit-builds`. Refer to [npm](http://npmjs.org) for details on how to install a specific version of the module.
 
-```
+```js
 var nwb = require('node-webkit-builds');
 console.log('version:', nwb.version);
 console.log('release notes:', nwb.releaseNotes);
