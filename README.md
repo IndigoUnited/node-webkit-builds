@@ -28,3 +28,7 @@ console.log('linux64:', nwb.builds.linux64);
 console.log('win32:', nwb.builds.win32);
 console.log('mac32:', nwb.builds.mac32);
 ```
+
+## Updating the module
+
+In case you ever need to update this package manually, install [automaton](http://indigounited.com/automaton) (`nom install -g automaton`) and run `automaton tasks/update-module.autofile.js`. This will automatically look for new versions of the build, and update the module if necessary.

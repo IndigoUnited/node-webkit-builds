@@ -14,7 +14,9 @@
     "node-webkit",
     "node",
     "webkit",
-    "nw"
+    "nw",
+    "build",
+    "builds"
   ],
   "author": "Indigo United",
   "license": "MIT",
