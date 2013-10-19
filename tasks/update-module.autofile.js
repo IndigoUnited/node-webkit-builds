@@ -17,6 +17,8 @@ module.exports = function (task) {
     .name('update-module')
     .author('Indigo United')
 
+    .option('fail', 'If should give exit error code when no updates available', false)
+
     .setup(function (opts, ctx, next) {
         opts.readMeFile = __dirname + '/tmp/node-webkit-readme.md';
 
@@ -100,7 +102,12 @@ module.exports = function (task) {
                 });
             } else {
                 ctx.log.warnln('Did not find more recent version');
-                next();
+                // if should fail when no updates available, throw exit code error
+                if (opts.fail) {
+                    process.exit(1);
+                } else {
+                    next();
+                }
             }
 
             next();
