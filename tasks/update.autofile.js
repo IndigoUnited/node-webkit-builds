@@ -1,5 +1,3 @@
-/*jshint es5:true*/
-
 'use strict';
 
 var download = require('autofile-download');
@@ -7,14 +5,15 @@ var mkdir    = require('autofile-mkdir');
 var rm       = require('autofile-rm');
 var fs       = require('fs');
 var semver   = require('semver');
+var exec     = require('child_process').exec;
 
 var pkgJsonFile  = __dirname + '/../package.json',
     dataJsonFile = __dirname + '/../data.json';
 
 module.exports = function (task) {
     task
-    .id('update-module')
-    .name('update-module')
+    .id('update')
+    .name('update')
     .author('Indigo United')
 
     .option('fail', 'If should give exit error code when no updates available', false)
@@ -74,7 +73,7 @@ module.exports = function (task) {
             ctx.log.debugln('win32:', win32);
             ctx.log.debugln('mac32:', mac32);
             ctx.log.debugln('release notes:', releaseNotes);
-            
+
 
             var pkg = require(pkgJsonFile);
 
@@ -88,6 +87,10 @@ module.exports = function (task) {
                 pkg.version = version;
 
                 fs.writeFile(pkgJsonFile, JSON.stringify(pkg, null, '  '), function (err) {
+                    if (err) {
+                        return next(err);
+                    }
+
                     fs.writeFile(dataJsonFile, JSON.stringify({
                         'release-notes': releaseNotes,
                         builds: {
@@ -97,7 +100,21 @@ module.exports = function (task) {
                             mac32:   mac32
                         }
                     }, null, '  '), function (err) {
-                        next(err);
+                        if (err) {
+                            return next(err);
+                        }
+
+                        var child,
+                            cmd = 'pushd ' + __dirname + '../; git commit -am "bump version: ' + pkg.version + '"; git push origin master'
+                        ;
+
+                        child = exec(cmd, function (err, stdout, stderr) {
+                            if (err) {
+                                ctx.log.debugln('Error bumping version in git:', stderr);
+                            }
+
+                            next(err);
+                        });
                     });
                 });
             } else {

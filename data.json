@@ -1,9 +1,9 @@
 {
-  "release-notes": "https://groups.google.com/d/msg/node-webkit/VQQYj-hbQV8/aw_Hwy2GzGQJ",
+  "release-notes": "https://groups.google.com/d/msg/node-webkit/qpBhcWr-hSc/caGjhtl8cEgJ",
   "builds": {
-    "linux32": "https://s3.amazonaws.com/node-webkit/v0.9.1/node-webkit-v0.9.1-linux-ia32.tar.gz",
-    "linux64": "https://s3.amazonaws.com/node-webkit/v0.9.1/node-webkit-v0.9.1-linux-x64.tar.gz",
-    "win32": "https://s3.amazonaws.com/node-webkit/v0.9.1/node-webkit-v0.9.1-win-ia32.zip",
-    "mac32": "https://s3.amazonaws.com/node-webkit/v0.9.1/node-webkit-v0.9.1-osx-ia32.zip"
+    "linux32": "https://s3.amazonaws.com/node-webkit/v0.9.2/node-webkit-v0.9.2-linux-ia32.tar.gz",
+    "linux64": "https://s3.amazonaws.com/node-webkit/v0.9.2/node-webkit-v0.9.2-linux-x64.tar.gz",
+    "win32": "https://s3.amazonaws.com/node-webkit/v0.9.2/node-webkit-v0.9.2-win-ia32.zip",
+    "mac32": "https://s3.amazonaws.com/node-webkit/v0.9.2/node-webkit-v0.9.2-osx-ia32.zip"
   }
 }
