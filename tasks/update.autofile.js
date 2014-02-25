@@ -105,13 +105,15 @@ module.exports = function (task) {
                         }
 
                         var child,
-                            cmd = 'pushd ' + __dirname + '../; git commit -am "bump version: ' + pkg.version + '"; git push origin master'
+                            cmd = 'pushd ' + __dirname + '../; git commit -am "bump version: ' + pkg.version + '"; git push origin master; npm publish'
                         ;
 
                         child = exec(cmd, function (err, stdout, stderr) {
                             if (err) {
                                 ctx.log.debugln('Error bumping version in git:', stderr);
                             }
+
+                            ctx.log.successln('Published new version');
 
                             next(err);
                         });
