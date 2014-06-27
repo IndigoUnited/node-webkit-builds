@@ -4,7 +4,7 @@ Easy [node-webkit](https://github.com/rogerwang/node-webkit) version dependency 
 
 ## What is it?
 
-`node-webkit-builds` allows you to easily control the dependency for [node-webkit](https://github.com/rogerwang/node-webkit). The module version is always in sync with the version of node-webkit, allowing you to declare the version of node-webkit in which you depend on.
+`node-webkit-builds` allows you to easily control the dependency for [node-webkit](https://github.com/rogerwang/node-webkit). The module version is always in sync with the version of node-webkit, allowing you to declare the version of node-webkit in which you depend on. This is particularly useful for build tools, so that you can easily download the version of node-webkit you depend on, for a particular operating system.
 
 This module provides you:
 
